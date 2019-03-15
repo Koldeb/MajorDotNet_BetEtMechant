@@ -10,4 +10,56 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Index.cshtml" />
+    <Content Remove="Views\_Layout.cshtml" />
+    <Content Remove="wwwroot\bootstrap\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\bootstrap\css\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\bootstrap\css\bootstrap-grid.css" />
+    <Content Remove="wwwroot\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Remove="wwwroot\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Remove="wwwroot\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Remove="wwwroot\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Remove="wwwroot\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="Models\Index.cshtml" />
+    <Content Remove="wwwroot\EmptyHTMLFile.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\bootstrap\" />
+    <Folder Include="wwwroot\bootstrap\css\" />
+    <Folder Include="wwwroot\bootstrap\js\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Class\" />
+    <Folder Include="Class\Validators\" />
+    <Folder Include="Data\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\Championships\" />
+    <Folder Include="Areas\Admin\Views\Teams\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\Index.cshtml.cs" />
+    <Compile Remove="Models\Index.cshtml.cs" />
+    <Compile Remove="Models\Index.cshtml.cs" />
+    <Compile Remove="Class\Validators\HomeController.cs" />
+  </ItemGroup>
 </Project>

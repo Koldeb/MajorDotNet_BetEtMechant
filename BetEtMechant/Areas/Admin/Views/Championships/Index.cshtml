@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BetEtMechant.Models.Championship>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a href="" data-id="@item.ID" class="suppr"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section SectionScripts {
+    <script>
+    const suppr = document.querySelectorAll('.suppr');
+    suppr.forEach(supp => {
+      supp.addEventListener('click', async e => {
+        try {
+          e.preventDefault();
+
+          const formData = new FormData();
+          formData.append( 'id', `${supp.dataset.id}` );
+
+          const response = await fetch('@Url.Action("delete")', {
+            method: 'POST',
+            body: formData
+          });
+          const data = await response.json();
+          console.log(`le championat ${data.Name} à été supprimé`);
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    });
+    </script>
+}

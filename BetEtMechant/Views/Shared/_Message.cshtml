@@ -1,0 +1,7 @@
+﻿@if (TempData["Flash"] != null)
+{
+var Flash = (dynamic)TempData["Flash"];
+<div class="alert alert-@Flash.type">
+    @Flash.message
+</div>
+}

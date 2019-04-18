@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BetEtMechant.Data;
 using BetEtMechant.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BetEtMechant.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
         private readonly SignInManager<User> signInManager;
         private readonly UserManager<User> userManager;
 
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager)
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, BetDbContext context) : base(context)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -47,6 +48,7 @@ namespace BetEtMechant.Controllers
 
                 if(result.Succeeded)
                 {
+                    DisplayMessage("Utilisateur créé", Class.TypeMessage.SUCCESS);
                     return RedirectToAction("index", "home");
                 }
                 else
@@ -75,6 +77,8 @@ namespace BetEtMechant.Controllers
                 {
                     if (!string.IsNullOrWhiteSpace(returnUrl))
                         return Redirect(returnUrl);
+
+                    DisplayMessage("Vous êtes connecté", Class.TypeMessage.SUCCESS);
                     return RedirectToAction("index", "home");
                 }
 
@@ -95,6 +99,7 @@ namespace BetEtMechant.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
+            DisplayMessage("Vous êtes déconnecté", Class.TypeMessage.DANGER);
             return RedirectToAction("index", "home");
         }
 

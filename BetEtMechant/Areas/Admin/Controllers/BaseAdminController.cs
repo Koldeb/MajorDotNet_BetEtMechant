@@ -1,4 +1,5 @@
-﻿using BetEtMechant.Data;
+﻿using BetEtMechant.Controllers;
+using BetEtMechant.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,19 +11,10 @@ namespace BetEtMechant.Areas.Administration.Controllers
 {
     [Area("admin")]
     [Authorize]
-    public abstract class BaseAdminController : Controller
+    public abstract class BaseAdminController : BaseController
     {
-        protected readonly BetDbContext _context;
-        public BaseAdminController(BetDbContext context)
+        protected BaseAdminController(BetDbContext context) : base(context)
         {
-            _context = context;
         }
-
-        protected void DisplayMessage(string message, string type)
-        {
-            dynamic data = new { message, type };
-            TempData["Flash"] = data;
-        }
-
     }
 }

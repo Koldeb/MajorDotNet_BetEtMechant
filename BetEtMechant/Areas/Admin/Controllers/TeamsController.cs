@@ -62,7 +62,7 @@ namespace BetEtMechant.Areas.Administration.Controllers
                 _context.Add(team);
                 await _context.SaveChangesAsync();
 
-                DisplayMessage("Equipe créée", "success");
+                DisplayMessage("Equipe créée", Class.TypeMessage.SUCCESS);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -106,7 +106,7 @@ namespace BetEtMechant.Areas.Administration.Controllers
                     _context.Update(team);
                     await _context.SaveChangesAsync();
 
-                    DisplayMessage("Equipe update", "warning");
+                    DisplayMessage("Equipe update", Class.TypeMessage.WARNING);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -153,7 +153,7 @@ namespace BetEtMechant.Areas.Administration.Controllers
             _context.Teams.Remove(team);
             await _context.SaveChangesAsync();
 
-            DisplayMessage("Equipe delete", "danger");
+            DisplayMessage("Equipe delete", Class.TypeMessage.DANGER);
             return RedirectToAction(nameof(Index));
         }
 
